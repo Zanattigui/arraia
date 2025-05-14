@@ -7,7 +7,7 @@ function Header () {
     return (
         <>
             <GlobalStyle />
-            <Titulo>Pratos para festa Junina🍽️</Titulo>
+            <Titulo>Pratos para festa Junina 🍽️</Titulo>
             <P>Selecione um prato delicioso para trazer para nossa Festa Junina!</P>
 
         </>

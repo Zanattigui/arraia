@@ -19,6 +19,12 @@ export const ContainerInput = styled.div`
 
 export const ListaUl = styled.ul`
   padding: 0px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `
 
 export const ListaOl = styled.ol`
@@ -30,6 +36,11 @@ export const ListaOl = styled.ol`
   margin: 20px 5px;
   border-radius: 10px;
   background-color:rgb(255, 255, 255);
+
+  @media (min-width: 768px) {
+  height: 100px;
+  width: 300px;
+  }
 `
 
 export const Nome = styled.span`
