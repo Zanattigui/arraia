@@ -13,8 +13,9 @@ export const Input = styled.input`
   }
 `;
 
-export const ContainerInput = styled.div`
+export const Container = styled.div`
   display: flex;
+  margin: 15px;
 `
 
 export const ListaUl = styled.ul`
@@ -55,20 +56,29 @@ export const Reservado = styled.p`
 `
 
 export const Botao = styled.button`
-  background-color: #facc15;
-  color: #7c2d12; 
+  background-color: ${({ tipo, ativo }) => {
+    if (tipo === "reservar") return "#facc15"; 
+    if (tipo === "doce") return ativo ? "#F77F00" : "#fff";
+    if (tipo === "salgado") return ativo ? "#774936" : "#fff";
+    return "#facc15";
+  }};
+
+  color: ${({ tipo, ativo }) => {
+    if (tipo === "reservar") return "#7c2d12"; // branco no reservar
+    if ((tipo === "doce" || tipo === "salgado") && ativo) return "#fff"; // texto branco se ativo doce ou salgado
+    if ((tipo === "doce" || tipo === "salgado") && !ativo) return "#7c2d12"; // texto marrom escuro inativo
+    return "#7c2d12"; // padrão texto marrom
+  }};
+
+  border: ${({ tipo }) => (tipo === "reservar" ? "2px dashed #ea580c" : "none")};
+
+
   padding: 12px 24px;
   font-size: 1.1rem;
   font-weight: bold;
   font-family: 'FestaJunina', sans-serif; 
-  border: 2px dashed #ea580c; 
   border-radius: 12px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   letter-spacing: 1.5px;
-
-  &:hover {
-    background-color: #fde047;
-    transform: translateY(-2px);
-  }
 `;
