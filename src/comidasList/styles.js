@@ -16,6 +16,8 @@ export const Input = styled.input`
 export const Container = styled.div`
   display: flex;
   margin: 15px;
+  justify-content: center;
+  align-items: center;
 `
 
 export const ListaUl = styled.ul`
