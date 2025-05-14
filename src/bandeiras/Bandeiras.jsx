@@ -10,7 +10,7 @@ function Bandeiras () {
             position: "absolute",
             top: "0",
             left: "0",
-            width: "100vw",
+            width: "97vw",
             height: "60px",
             zIndex: 1,
           }}
@@ -29,7 +29,7 @@ function Bandeiras () {
         <div className="bandeira" style={{ backgroundColor: "yellow", left: "45%", top: "27px", transform: "rotate(1deg)" }}></div>
         <div className="bandeira" style={{ backgroundColor: "orange", left: "62%", top: "25px", transform: "rotate(-3deg)" }}></div>
         <div className="bandeira" style={{ backgroundColor: "purple", left: "78%", top: "18px", transform: "rotate(-7deg)" }}></div>
-        <div className="bandeira" style={{ backgroundColor: "cyan", left: "94%", top: "4px", transform: "rotate(-17deg)" }}></div>
+        <div className="bandeira" style={{ backgroundColor: "cyan", left: "91%", top: "4px", transform: "rotate(-17deg)" }}></div>
       </div>
     )
 }
