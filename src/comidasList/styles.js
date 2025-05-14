@@ -5,6 +5,7 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   margin: 2px auto;
+  font-size: 1.2rem;
 
   &:focus {
     outline: none;
