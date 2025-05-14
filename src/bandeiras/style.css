@@ -1,0 +1,19 @@
+.varal-container {
+  position: relative;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.bandeira {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  clip-path: polygon(
+    0% 0%,     /* topo esquerdo */
+    100% 0%,   /* topo direito */
+    100% 100%, /* canto inferior direito */
+    50% 75%,   /* centro mais acima para o "V" */
+    0% 100%    /* canto inferior esquerdo */
+  );
+  z-index: 2; /* acima do varal */
+}
