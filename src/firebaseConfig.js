@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC61ggGGT8GzfI7uPVXTBsX4YluTpsfoTk",
-    authDomain: "festa-junina-1b1d3.firebaseapp.com",
-    projectId: "festa-junina-1b1d3",
-    storageBucket: "festa-junina-1b1d3.firebasestorage.app",
-    messagingSenderId: "670744732965",
-    appId: "1:670744732965:web:a411bf3e9e084f08f526cc"
+    apiKey: import.meta.env.API_KEY,
+    authDomain: import.meta.env.AUTH_DOMAIN,
+    projectId: import.meta.env.PROJECT_ID,
+    storageBucket: import.meta.env.STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.MESSAGING_SENDER_ID,
+    appId: import.meta.env.APP_ID,
   };
 
 const app = initializeApp(firebaseConfig);
