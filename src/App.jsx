@@ -5,7 +5,7 @@ import Header from "./header/Header"
 function App() {
 
   return (
-    <div className="min-h-screen bg-yellow-50">
+    <div>
       <Bandeiras/>
       <Header/>
       <ComidasList/>

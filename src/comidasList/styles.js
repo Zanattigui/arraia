@@ -28,7 +28,7 @@ export const ListaOl = styled.ol`
   padding: 35px;
   margin: 20px 5px;
   border-radius: 10px;
-  background: #fff;
+  background-color:rgb(255, 255, 255);
 `
 
 export const Nome = styled.span`
