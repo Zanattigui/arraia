@@ -8,7 +8,7 @@ function Header () {
         <>
             <GlobalStyle />
             <Titulo>Pratos para festa Junina 🍽️</Titulo>
-            <P>Selecione um prato delicioso para trazer para nossa Festa Junina!</P>
+            <P>Escolha um prato doce e um prato salgado para trazer e tornar nossa Festa Junina ainda mais deliciosa!</P>
             <Pzin>(Selecione um prato doce e um salgado)</Pzin>
 
         </>
