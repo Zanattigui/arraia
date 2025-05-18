@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
 import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
-
 import { Input } from "./styles";
 import { Container } from "./styles"
 import { ListaUl } from "./styles";
@@ -9,12 +8,14 @@ import { ListaOl } from "./styles";
 import { Nome } from "./styles";
 import { Reservado } from "./styles";
 import { Botao } from "./styles";
+import OutroModal from "../modalOutraComida/modalOutra";
 
 
 function ComidasList() {
   const [comidas, setComidas] = useState([]);
   const [nome, setNome] = useState("");
   const [filtro, setFiltro] = useState("salgado");
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "comidas"), (snapshot) => {
@@ -47,8 +48,6 @@ function ComidasList() {
 
   return (
     <>
-
-
       <Container>
           <Input
           type="text"
@@ -67,10 +66,13 @@ function ComidasList() {
           Pratos Salgados
         </Botao>
       </Container>
-
+      <Botao tipo="confirmar" onClick={() => setMostrarModal(true)}>
+        Outro prato
+      </Botao>
       <ListaUl className="space-y-2">
         {comidas
         .filter(comida => comida.tipo === filtro)
+        .sort((a, b) => !!a.reservadoPor - !!b.reservadoPor)
         .map(comida => (
           <ListaOl key={comida.id}>
             <Nome>
@@ -90,6 +92,9 @@ function ComidasList() {
           </ListaOl>
         ))}
       </ListaUl>
+      {mostrarModal && (
+        <OutroModal onClose={() => setMostrarModal(false)} />
+      )}
     </>
   );
 }

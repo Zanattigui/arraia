@@ -74,7 +74,9 @@ export const Botao = styled.button`
 
   border: ${({ tipo }) => (tipo === "reservar" ? "2px dashed #ea580c" : "none")};
 
-
+  margin: ${({ tipo }) => (tipo === "confirmar" ? "auto" : "")};
+  display: ${({ tipo }) => (tipo === "confirmar" ? "block" : "inline-block")};
+  
   padding: 12px 24px;
   font-size: 1.1rem;
   font-weight: bold;

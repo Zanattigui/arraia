@@ -22,6 +22,14 @@ export const P = styled.p`
     color:rgb(95, 70, 62);
     font-size: 1.5em;
     text-align: center;
+    margin-bottom: 10px;
+`
+
+export const Pzin = styled.p`
+    color:rgb(95, 70, 62);
+    font-size: 1.1em;
+    text-align: center;
+    margin: 0 auto;
 `
 
 export const Input = styled.input`
