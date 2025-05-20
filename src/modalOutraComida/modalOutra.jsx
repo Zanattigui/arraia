@@ -2,6 +2,7 @@ import { useState } from "react";
 import { db } from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 import { ModalContainer, ModalContent, Input, Select, Botao } from "./styles";
+import { Pzin } from "../header/styles";
 
 function OutroModal({ onClose }) {
   const [nome, setNome] = useState("");
@@ -17,7 +18,8 @@ function OutroModal({ onClose }) {
     await addDoc(collection(db, "comidas"), {
       nome: comida.trim(),
       tipo,
-      reservadoPor: nome.trim()
+      reservadoPor: [nome.trim()],
+      maxReservas	: 1
     });
 
     onClose(); // fecha o modal
@@ -36,6 +38,7 @@ function OutroModal({ onClose }) {
           placeholder="Nome da comida"
           value={comida}
           onChange={(e) => setComida(e.target.value)}
+          maxLength={17}
         />
         <Select value={tipo} onChange={(e) => setTipo(e.target.value)}>
           <option value="salgado">Salgado</option>
