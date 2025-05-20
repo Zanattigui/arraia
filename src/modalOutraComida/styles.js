@@ -28,6 +28,7 @@ export const Input = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 1rem;
 `;
 
 export const Select = styled.select`

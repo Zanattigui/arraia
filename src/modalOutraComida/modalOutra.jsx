@@ -30,6 +30,7 @@ function OutroModal({ onClose }) {
           placeholder="Seu nome"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
+          maxLength={17}
         />
         <Input
           placeholder="Nome da comida"
