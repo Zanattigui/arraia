@@ -39,6 +39,7 @@ export const ListaOl = styled.ol`
   margin: 20px 5px;
   border-radius: 10px;
   background-color:rgb(255, 255, 255);
+  position: relative;
 
   @media (min-width: 768px) {
   height: 100px;

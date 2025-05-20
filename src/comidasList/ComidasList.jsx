@@ -19,10 +19,14 @@ function ComidasList() {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "comidas"), (snapshot) => {
-      const lista = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
+      const lista = snapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          ...data,
+          reservadoPor: Array.isArray(data.reservadoPor) ? data.reservadoPor : []
+        };
+      });
       setComidas(lista);
     });
 
@@ -33,17 +37,15 @@ function ComidasList() {
     if (!nome.trim()) {
       alert("Digite seu nome!");
       return;
+    } else {
+      alert(`Prato reservado com sucesso! ${nome}`);
     }
 
-    const comidaDoc = doc(db, "comidas", id);
     const item = comidas.find(c => c.id === id);
-    
-    if (item.reservadoPor) {
-      alert("Essa comida já foi reservada por outra pessoa.");
-      return;
-    }
+    const comidaDoc = doc(db, "comidas", id);
+    const novaLista = [...(item.reservadoPor || []), nome];
 
-    await updateDoc(comidaDoc, { reservadoPor: nome });
+    await updateDoc(comidaDoc, { reservadoPor: novaLista });
   };
 
   return (
@@ -75,17 +77,17 @@ function ComidasList() {
         .sort((a, b) => !!a.reservadoPor - !!b.reservadoPor)
         .map(comida => (
           <ListaOl key={comida.id}>
+            <div style={{ position: "absolute", top: "8px", right: "8px", fontWeight: "bold" }}>
+              {comida.reservadoPor?.length || 0}/{comida.maxReservas}
+            </div>
             <Nome>
               {comida.nome} <br />
             </Nome>
             <Reservado>
-              {comida.reservadoPor && ` (Reservado)`}
+              {comida.reservadoPor?.length >= comida.maxReservas && " (Reservado)"}
             </Reservado>
-            {!comida.reservadoPor && (
-              <Botao
-                tipo="reservar"
-                onClick={() => reservar(comida.id)}
-              >
+            {(comida.reservadoPor?.length ?? 0) < comida.maxReservas && (
+              <Botao tipo="reservar" onClick={() => reservar(comida.id)}>
                 👨‍🌾Reservar👩‍🌾
               </Botao>
             )}
