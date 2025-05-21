@@ -74,7 +74,15 @@ function ComidasList() {
       <ListaUl className="space-y-2">
         {comidas
         .filter(comida => comida.tipo === filtro)
-        .sort((a, b) => !!a.reservadoPor - !!b.reservadoPor)
+        .sort((a, b) => {
+          const aCheio = (a.reservadoPor?.length || 0) >= a.maxReservas;
+          const bCheio = (b.reservadoPor?.length || 0) >= b.maxReservas;
+
+          const aPeso = aCheio ? 2 : (a.reservadoPor?.length || 0); // vazio = 0, 1/2 = 1, cheio = 2
+          const bPeso = bCheio ? 2 : (b.reservadoPor?.length || 0);
+
+          return aPeso - bPeso;
+        })
         .map(comida => (
           <ListaOl key={comida.id}>
             <div style={{ position: "absolute", top: "8px", right: "8px", fontWeight: "bold" }}>
